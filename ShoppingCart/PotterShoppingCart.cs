@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace ShoppingCart
 {
@@ -15,15 +16,15 @@ namespace ShoppingCart
 		    _books = book;
 	    }
 
-	    public int CalculatePrice()
+	    public double CalculatePrice()
 	    {
 		    if (_books.Count == 2)
 		    {
-			    return 190;
-			}
+			    return _books.Sum(p => p.Price)*0.95;
+		    }
 		    if (_books.Count == 3)
 		    {
-			    return 270;
+			    return _books.Sum(p => p.Price)*0.9;
 		    }
 		    return 100;
 	    }

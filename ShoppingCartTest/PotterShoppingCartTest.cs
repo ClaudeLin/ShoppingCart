@@ -8,8 +8,8 @@ namespace ShoppingCartTest
 	[TestClass]
 	public class PotterShoppingCartTest
 	{
-		private int expected;
-		private int actual;
+		private double expected;
+		private double actual;
 		private PotterShoppingCart target;
 		private List<Book> books;
 		[TestMethod]
