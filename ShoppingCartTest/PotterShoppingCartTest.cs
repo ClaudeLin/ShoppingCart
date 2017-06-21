@@ -24,10 +24,11 @@ namespace ShoppingCartTest
 					Price = 100
 				}
 			};
-			target.AddCommodity(books);
-			actual = target.CalculatePrice();
 			expected = 100;
 
+			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+			
 			Assert.AreEqual(expected, actual);
 		}
 
@@ -48,13 +49,43 @@ namespace ShoppingCartTest
 					Price = 100
 				}
 			};
-
-			target.AddCommodity(books);
-
-			actual = target.CalculatePrice();
 			expected = 190;
 
+			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+			
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void Buy_1_First_Volume_1_Second_Volume_and_1_Third_Volume_should_pay_270()
+		{
+			target=new PotterShoppingCart();
+			books=new List<Book>()
+			{
+				new Book()
+				{
+					VolumeNo = 1,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 2,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 3,
+					Price = 100
+				}
+			};
+			expected = 270;
+
+			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+
 			Assert.AreEqual(expected,actual);
+
 		}
 	}
 }
