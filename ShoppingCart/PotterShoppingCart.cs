@@ -19,6 +19,8 @@ namespace ShoppingCart
 			{5,0.75m}
 		};
 
+		private decimal _totalPrice;
+
 		public PotterShoppingCart()
 		{
 			_books = new List<Book>();
@@ -31,30 +33,29 @@ namespace ShoppingCart
 
 		public decimal CalculatePrice()
 		{
-			return _books.Count == 0 ? 0m : CalculateDiscountPrice();
+			return _books.Count == 0 ? _totalPrice : CalculateDiscountPrice();
 		}
 
 		private decimal CalculateDiscountPrice()
 		{
-			var totalPrice = 0m;
 			while (_books.Count > 0)
 			{
-				totalPrice += CalculateSetPrice(_books);
-				_books = GetRemainBooks(_books);
+				CalculateSetPrice();
+				UpdateRemainBooks();
 			}
-			return totalPrice;
+			return _totalPrice;
 		}
 
-		private List<Book> GetRemainBooks(List<Book> books)
+		private void UpdateRemainBooks()
 		{
-			return books.Where(i => i.Count > 1)
+			_books= _books.Where(i => i.Count > 1)
 				.Select(b => new Book() { VolumeNo = b.VolumeNo, Count = b.Count - 1, Price = b.Price })
 				.ToList();
 		}
 
-		private decimal CalculateSetPrice(List<Book> books)
+		private void CalculateSetPrice()
 		{
-			return books.Sum(i => i.Price) * _discountTable[books.Count];
+			_totalPrice += _books.Sum(i => i.Price) * _discountTable[_books.Count];
 		}
 	}
 }
