@@ -8,5 +8,14 @@ namespace ShoppingCart
 {
     public class PotterShoppingCart
     {
+	    public void AddCommodity(List<Book> book)
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    public int CalculatePrice()
+	    {
+		    throw new NotImplementedException();
+	    }
     }
 }
