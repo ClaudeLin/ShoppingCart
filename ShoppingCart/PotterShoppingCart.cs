@@ -15,7 +15,8 @@ namespace ShoppingCart
 			{1,1},
 			{2,0.95},
 			{3,0.9},
-			{4,0.8}
+			{4,0.8},
+			{5,0.75}
 		};
 
 		public void AddCommodity(List<Book> book)
