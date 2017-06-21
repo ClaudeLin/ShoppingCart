@@ -19,6 +19,11 @@ namespace ShoppingCart
 			{5,0.75}
 		};
 
+		public PotterShoppingCart()
+		{
+			_books = new List<Book>();
+		}
+
 		public void AddCommodity(List<Book> book)
 		{
 			_books = book;
@@ -26,28 +31,32 @@ namespace ShoppingCart
 
 		public double CalculatePrice()
 		{
-			List<Book> tempBooks=new List<Book>();
-			foreach (var book in _books)
+			return _books.Count == 0 ? 0.0 : CalculateDiscountPrice();
+		}
+
+		private double CalculateDiscountPrice()
+		{
+			var totalPrice = CalculateSetPrice(_books);
+			var remainBooks = GetRemainBooks(_books);
+
+			while (remainBooks.Count > 0)
 			{
-				if (!tempBooks.Exists(v => v.VolumeNo == book.VolumeNo))
-				{
-					tempBooks.Add(book);
-				}
+				totalPrice += CalculateSetPrice(remainBooks);
+				remainBooks = GetRemainBooks(remainBooks);
 			}
-			var tempPrice = 0.0;
-			if (_books.Count != tempBooks.Count)
-			{
-				foreach (var tempBook in tempBooks)
-				{
-					if (_books.Exists(v => v.VolumeNo == tempBook.VolumeNo))
-					{
-						_books.Remove(tempBook);
-					}
-				}
-				tempPrice = tempBooks.Sum(p => p.Price) * _discountTable[tempBooks.Count];
-			}
-			
-			return _books.Sum(p => p.Price) * _discountTable[_books.Count]+ tempPrice;
+			return totalPrice;
+		}
+
+		private List<Book> GetRemainBooks(List<Book> books)
+		{
+			return books.Where(i => i.Count > 1)
+				.Select(b => new Book() { VolumeNo = b.VolumeNo, Count = b.Count - 1, Price = b.Price })
+				.ToList();
+		}
+
+		private double CalculateSetPrice(List<Book> books)
+		{
+			return books.Sum(i => i.Price) * _discountTable[books.Count];
 		}
 	}
 }

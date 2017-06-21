@@ -181,12 +181,8 @@ namespace ShoppingCartTest
 				new Book()
 				{
 					VolumeNo = 3,
-					Price = 100
-				},
-				new Book()
-				{
-					VolumeNo = 3,
-					Price = 100
+					Price = 100,
+					Count = 2
 				}
 			};
 			expected = 370;
@@ -211,27 +207,63 @@ namespace ShoppingCartTest
 				new Book()
 				{
 					VolumeNo = 2,
-					Price = 100
+					Price = 100,
+					Count = 2
 				},
-				new Book()
-				{
-					VolumeNo = 2,
-					Price = 100
-				},
+				
 				new Book()
 				{
 					VolumeNo = 3,
-					Price = 100
-				},
-				new Book()
-				{
-					VolumeNo = 3,
-					Price = 100
+					Price = 100,
+					Count=2
 				}
 			};
 			expected = 460;
 
 			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void Buy_1_First_Volume_2_Second_Volume_and_3_Third_Volume_should_pay_560()
+		{
+			target = new PotterShoppingCart();
+			books = new List<Book>
+			{
+				new Book()
+				{
+					VolumeNo = 1,
+					Price = 100,
+					Count = 1
+				},
+				new Book()
+				{
+					VolumeNo = 2,
+					Price = 100,
+					Count=2
+				},
+				new Book()
+				{
+					VolumeNo = 3,
+					Price = 100,
+					Count=3
+				}
+			};
+			expected = 560;
+
+			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+
+			Assert.AreEqual(expected, actual);
+		}
+
+		[TestMethod]
+		public void Cart_Is_Empty_should_pay_0()
+		{
+			target = new PotterShoppingCart();
+		
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
