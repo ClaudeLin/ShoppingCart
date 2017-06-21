@@ -8,8 +8,8 @@ namespace ShoppingCartTest
 	[TestClass]
 	public class PotterShoppingCartTest
 	{
-		private double expected;
-		private double actual;
+		private decimal expected;
+		private decimal actual;
 		private PotterShoppingCart target;
 		private List<Book> books;
 		[TestMethod]
@@ -26,7 +26,7 @@ namespace ShoppingCartTest
 			};
 			expected = 100;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -51,7 +51,7 @@ namespace ShoppingCartTest
 			};
 			expected = 190;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -81,7 +81,7 @@ namespace ShoppingCartTest
 			};
 			expected = 270;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -116,7 +116,7 @@ namespace ShoppingCartTest
 			};
 			expected = 320;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -156,7 +156,7 @@ namespace ShoppingCartTest
 			};
 			expected = 375;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -187,7 +187,7 @@ namespace ShoppingCartTest
 			};
 			expected = 370;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -220,7 +220,7 @@ namespace ShoppingCartTest
 			};
 			expected = 460;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
@@ -253,7 +253,7 @@ namespace ShoppingCartTest
 			};
 			expected = 560;
 
-			target.AddCommodity(books);
+			target.PutBooksToCart(books);
 			actual = target.CalculatePrice();
 
 			Assert.AreEqual(expected, actual);
