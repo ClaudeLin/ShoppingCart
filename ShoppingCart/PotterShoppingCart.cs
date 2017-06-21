@@ -17,11 +17,7 @@ namespace ShoppingCart
 
 	    public int CalculatePrice()
 	    {
-		    if (_books.Count == 2)
-		    {
-			    return 190;
-			}
-		    return 100;
+		    return _books.Count == 2 ? 190 : 100;
 	    }
     }
 }
