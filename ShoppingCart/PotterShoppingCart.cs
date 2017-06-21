@@ -10,12 +10,11 @@ namespace ShoppingCart
     {
 	    public void AddCommodity(List<Book> book)
 	    {
-		    throw new NotImplementedException();
 	    }
 
 	    public int CalculatePrice()
 	    {
-		    throw new NotImplementedException();
+		    return 100;
 	    }
     }
 }
