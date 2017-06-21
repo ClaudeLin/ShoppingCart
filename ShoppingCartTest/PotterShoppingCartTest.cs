@@ -196,5 +196,45 @@ namespace ShoppingCartTest
 
 			Assert.AreEqual(expected, actual);
 		}
+
+		[TestMethod]
+		public void Buy_1_First_Volume_2_Second_Volume_and_2_Third_Volume_should_pay_460()
+		{
+			target = new PotterShoppingCart();
+			books = new List<Book>
+			{
+				new Book()
+				{
+					VolumeNo = 1,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 2,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 2,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 3,
+					Price = 100
+				},
+				new Book()
+				{
+					VolumeNo = 3,
+					Price = 100
+				}
+			};
+			expected = 460;
+
+			target.AddCommodity(books);
+			actual = target.CalculatePrice();
+
+			Assert.AreEqual(expected, actual);
+		}
 	}
 }
