@@ -9,8 +9,8 @@ namespace ShoppingCart
 {
 	public class PotterShoppingCart
 	{
-		private List<Book> _books;
-		private readonly Dictionary<int, decimal> _discountTable = new Dictionary<int, decimal>()
+		private List<Book> _booksCart;
+		private readonly Dictionary<int, decimal> _discount = new Dictionary<int, decimal>()
 		{
 			{1,1m},
 			{2,0.95m},
@@ -23,39 +23,35 @@ namespace ShoppingCart
 
 		public PotterShoppingCart()
 		{
-			_books = new List<Book>();
+			_booksCart = new List<Book>();
 		}
 
-		public void PutBooksToCart(List<Book> book)
+		public void BuyBooks(List<Book> books)
 		{
-			_books = book;
+			_booksCart = books;
 		}
 
-		public decimal CalculatePrice()
+		public decimal CalculateCartTotalPrice()
 		{
-			return _books.Count == 0 ? _totalPrice : CalculateDiscountPrice();
-		}
-
-		private decimal CalculateDiscountPrice()
-		{
-			while (_books.Count > 0)
+			while (_booksCart.Count > 0)
 			{
-				CalculateSetPrice();
+				CalculateBookPrice();
 				UpdateRemainBooks();
 			}
+
 			return _totalPrice;
 		}
 
 		private void UpdateRemainBooks()
 		{
-			_books= _books.Where(i => i.Count > 1)
+			_booksCart= _booksCart.Where(i => i.Count > 1)
 				.Select(b => new Book() { VolumeNo = b.VolumeNo, Count = b.Count - 1, Price = b.Price })
 				.ToList();
 		}
 
-		private void CalculateSetPrice()
+		private void CalculateBookPrice()
 		{
-			_totalPrice += _books.Sum(i => i.Price) * _discountTable[_books.Count];
+			_totalPrice += _booksCart.Sum(i => i.Price) * _discount[_booksCart.Count];
 		}
 	}
 }

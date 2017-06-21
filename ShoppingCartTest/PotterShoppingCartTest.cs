@@ -26,8 +26,8 @@ namespace ShoppingCartTest
 			};
 			expected = 100;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -51,8 +51,8 @@ namespace ShoppingCartTest
 			};
 			expected = 190;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -81,8 +81,8 @@ namespace ShoppingCartTest
 			};
 			expected = 270;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -116,8 +116,8 @@ namespace ShoppingCartTest
 			};
 			expected = 320;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -156,8 +156,8 @@ namespace ShoppingCartTest
 			};
 			expected = 375;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -187,8 +187,8 @@ namespace ShoppingCartTest
 			};
 			expected = 370;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -220,8 +220,8 @@ namespace ShoppingCartTest
 			};
 			expected = 460;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -253,8 +253,8 @@ namespace ShoppingCartTest
 			};
 			expected = 560;
 
-			target.PutBooksToCart(books);
-			actual = target.CalculatePrice();
+			target.BuyBooks(books);
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
@@ -264,7 +264,7 @@ namespace ShoppingCartTest
 		{
 			target = new PotterShoppingCart();
 		
-			actual = target.CalculatePrice();
+			actual = target.CalculateCartTotalPrice();
 
 			Assert.AreEqual(expected, actual);
 		}
